@@ -183,3 +183,42 @@
 - mounted -> จะถูกเรียกเมื่อ component initialize เสร็จ (`สร้างเสร็จ`)
 - updated -> จะถูกเรียกเมื่อ state หรือ data มีการเปลี่ยนแปลง (`data มีการเปลี่ยแปลง`)
 - destroyed -> จะถูกเรียกเมื่อ component ถูกทำลาย
+
+# **`VueJs`**
+
+## **`Structure`**
+
+### _`package.json`_
+
+=> เป็นไฟล์ที่มีรายละเอียดพวก dependency ต่างๆที่เราลง,script ต่างๆที่เราใช้ run,เครื่องมือ tool ต่างๆที่ถูก set ไว้ในตัว project นี้
+
+### _`node_modules`_
+
+=> เป็น folder ที่เก็บ package ต่างๆของ node
+
+### _`public`_
+
+=> เป็น folder ที่เก็บไฟล์ public ต่างๆ เช่น index.html (`main template`),พวกรูปภาพ,โลโก้
+
+### _`src`_
+
+=> เป็น folder ที่เราใช้ในการทำงานต่างๆบน VueJs จะประกอบไปด้วย
+
+- folder assets -> ที่เอาไว้เก็บพวกไฟล์รูปต่างๆ
+- folder components -> ที่เอาไว้เก็บ component ที่จะใช้ใน VueJs ทั้งหมด
+- App.vue -> เป็น root component
+- main.js -> เป็นส่วนที่ render ตัว root component (`App.vue`) ให้ไปแสดงที่ index.html (`main template`) ผ่านการ mount DOM Element ด้วย `id="app"`
+
+### _`index.html(ใน folder public)`_
+
+=> เป็น main template ของ Web Application
+
+## **`Component`**
+
+![componentStructure](img/componentStructure.PNG)
+
+=> จากรูปข้างบน structure component จะแบ่งออกเป็น 3 ส่วน
+
+- `template` -> เป็นส่วนที่เอาไว้เขียน HTML
+- `script` -> เป็นส่วนที่เอาไว้เขียน javascript
+- `style` -> เป็นส่วนที่เอาไว้เขียน CSS
