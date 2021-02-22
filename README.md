@@ -94,6 +94,8 @@
 
 `Note : ` สามารถกำหนด index ได้ จาก parameter ตัวที่ 2
 
+`Note : ` ในการ render ด้วย v-for จะต้อง `v-bind:key`, `:key` ให้แต่ละ element ด้วย ไม่งั้น vueJs จะ error ไม่สามารถ render ได้ (`vueJs ต้องการ key เพื่อ access เข้าถึง DOM Element แต่ละตัวได้`)
+
 ![v-for2](img/v-for2.PNG)
 
 ## _`Methods`_
@@ -184,6 +186,10 @@
 - updated -> จะถูกเรียกเมื่อ state หรือ data มีการเปลี่ยนแปลง (`data มีการเปลี่ยแปลง`)
 - destroyed -> จะถูกเรียกเมื่อ component ถูกทำลาย
 
+## _`Watcher`_
+
+=> เป็น property ของ vue instance ที่เอาไว้ดักการเปลี่ยนแปลงค่า props ที่เกิดที่ parent component
+
 # **`VueJs`**
 
 ## **`Structure`**
@@ -220,5 +226,48 @@
 => จากรูปข้างบน structure component จะแบ่งออกเป็น 3 ส่วน
 
 - `template` -> เป็นส่วนที่เอาไว้เขียน HTML
+
+  `Note : ` ใน template สามารถมี tag element container ได้เพียง 1 ตัวเท่านั้น (`ต้องมีตัว tag container ครอบทุก tag ได้แค่ 1 ตัว`)
+
 - `script` -> เป็นส่วนที่เอาไว้เขียน javascript
 - `style` -> เป็นส่วนที่เอาไว้เขียน CSS
+
+  `Note : ` การกำหนด `scoped` ให้กับ tag style เป็นการบอกว่า css ที่ใช้จะใช้แค่ใน component นี้เท่านั้น ไม่ส่งผลต่อ global scope
+
+`Note : ` สามารถใช้ Bootstrap Vue เข้ามาช่วยในการจัดการ css ได้
+
+`Note : ` library fetch ที่เอาไว้จัดการเกี่ยวกับการดึง,ส่งข้อมูลกับ API เป็น standard library ที่มาพร้อมกับ node_module package ไม่ต้อง import เพิ่ม
+
+### **`Property in component`**
+
+- `data` -> เป็น object ที่เก็บข้อมูลของ component
+- `created` -> เป็น life cycle ที่จะถูกเรียกตอนสร้าง component
+- `mounted` -> เป็น life cycle ที่จะถูกเรียกเมื่อ component สร้างเสร็จ
+- `updated` -> เป็น life cycle ที่จะถูกเรียกเมื่อ state หรือ data ของ `component` มีการเปลี่ยนแปลง
+- `destroyed` -> เป็น life cycle ที่จะถูกเรียกเมื่อ component ถูกทำลาย
+- `filters` -> เป็น object ที่เอาไว้เขียน function pipe
+- `methods` -> เป็น object ที่เอาไว้เขียน function จัดการเกี่ยวกับ event หรือ logic ต่างๆ
+- `computed` -> เป็น object ที่เอาไว้เขียน property ที่มีการเปลี่ยนแปลงและต้องการ keep track data และนำ property ใน computed ไปใช้ต่อ
+- `props` -> เป็น array หรือ object ที่เอาไว้ declare props ที่รับส่งค่าจาก parent component
+- `component` -> เป็น array ที่เอาไว้ declare component อื่นที่ต้องการจะใช้บน parent component
+
+## **`Vue Devtool`**
+
+=> เป็น extension สำหรับการ inspect data บน component
+
+## **`Props & Slots`**
+
+### _`Props`_
+
+=> ค่าที่ส่งระหว่าง component ไม่ว่าจะเป็น primitive type data ต่างๆ หรือจะเป็น function, object ก็ได้
+
+- ในการส่ง props จาก parent component ไปที่ child component จะส่งค่าผ่าน HTML Attribute (`ใช้ v-bind ในการ binding`)
+- ในการรับ props จาก parent component มาที่ child component จะรับได้ 2 Approach ซึ่งรับผ่าน `props property`
+
+1. รับมาเป็น Array
+
+![props1](img/props1.PNG)
+
+2. รับมาเป็น Object
+
+![props2](img/props2.PNG)
