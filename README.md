@@ -116,6 +116,18 @@
 
 ![v-model](img/v-model.PNG)
 
+### **binding logic with VueJs Directive**
+
+=> เราสามารถ binding logic ใน VueJs Directive ได้ด้วยการใส่ `[ ]` ครอบ logic
+
+![bindingLogicWithDirective](img/bindingLogicWithDirective.PNG)
+
+`Note : ` แต่เพื่อความ clean code เค้าจะไม่นิยมเขียน Logic ใส่ไปใน VueJs Directive กัน แต่จะเขียนเป็น function แล้วโยนไปใช้ binding แทน ตามตัวอย่างข้างล่างนี้
+
+![bindingLogicWithDirective2](img/bindingLogicWithDirective2.PNG)
+
+![bindingLogicWithDirective3](img/bindingLogicWithDirective3.PNG)
+
 ## _`Events`_
 
 => ในการ binding event จะใช้ `v-on:event`
@@ -186,9 +198,26 @@
 - updated -> จะถูกเรียกเมื่อ state หรือ data มีการเปลี่ยนแปลง (`data มีการเปลี่ยแปลง`)
 - destroyed -> จะถูกเรียกเมื่อ component ถูกทำลาย
 
-## _`Watcher`_
+## _`Watched Property`_
 
-=> เป็น property ของ vue instance ที่เอาไว้ดักการเปลี่ยนแปลงค่า props ที่เกิดที่ parent component
+=> เป็น property ของ vue instance ที่เอาไว้เขียน function ที่เกี่ยวกับการ keep track การเปลี่ยนแปลงของ props (`ถ้า props ที่ parent component มีการเปลี่ยนแปลง มันจะเข้ามา run function ใน watch property`)
+
+`Note : ` สามารถเขียน watcher ได้ 2 Approach
+
+- `function`
+
+  > ![watch1](img/watch1.PNG)
+  >
+  > => watch แบบ function จะทำก็ต่อเมื่อ props มีการเปลี่ยนแปลง
+
+- `object`
+
+  > ![watch2](img/watch2.PNG)
+  >
+  > => watch แบบ object จะทำก็ต่อเมื่อ props มีการเปลี่ยนแปลงเหมือนกัน เพียงแต่เราสามารถ config ให้มันทำงานได้เลยตั้งแต่ส่งค่ามาคร้้งแรก
+  >
+  > - `immediate` => เป็น property ที่เอาไว้ set ว่าจะให้มันทำงานใน watch เลยมั้ยตั้งแต่คร้้งแรกที่ส่ง props เข้ามา (`true`) ถ้าไม่ (`false`)
+  > - `handler()` => เป็นส่วนที่เอาไว้จัดการ logic
 
 # **`VueJs`**
 
@@ -271,3 +300,5 @@
 2. รับมาเป็น Object
 
 ![props2](img/props2.PNG)
+
+## **`Vuex & Vue-Router`**
