@@ -302,3 +302,37 @@
 ![props2](img/props2.PNG)
 
 ## **`Vuex & Vue-Router`**
+
+![router_vuex](img/router_vuex.PNG)
+
+`Note : ` router, vuex จะถูก config ไว้ที่ main.js โดยจะถูกส่งเป็น property ของ vue instance (`ถูก set เป็น option ของ vue instance`)
+
+- router
+- store (`for vuex`)
+
+### **`Structure`**
+
+1. folder `views` => จะเป็นที่เก็บ page ทั้งหมดของ App
+
+![view](img/view.PNG)
+
+![view2](img/view2.PNG)
+
+2. folder `components` => จะเป็นที่เก็บ component ทั้งหมด ที่จะเอามาใช้ในแต่ละ view(`page`)
+
+![components](img/components.PNG)
+
+![components2](img/components2.PNG)
+
+`Note : ` ในแต่ละ view สามารถเอา component มาใช้ standalone ของใครของมันได้ ทำให้เกิด reuseable code ขึ้น (`component ที่สร้างขึ้นสามารถเอาไปใช้ซ้ำที่ view ไหนก็ได้ คือเขียนครั้งเดียวแต่สามารถนำไปใช้กับหลายๆที่ได้นั่นเอง`)
+
+3. `index.js` ใน folder `router` => เป็นที่สำหรับ config path route ในการเข้าถึงหน้าของแต่ละ view(`page`)
+
+- ใช้กำหนด route ให้แต่ละ view
+- ใช้ทำ Lazy loading (`การ group component เพื่อที่ตอน initialize App ขึ้นมาจะได้ไม่ต้อง load ทุก component ทั้งหมดมาทีเดียวตอนเปิด App ครั้งแรก แต่จะค่อยๆ load ทีละ group component ที่มีการเรียกใช้`)
+
+`Note : ` view มันก็คือ component ที่เป็น page
+
+3. `index.js` ใน folder `store` => เป็นไฟล์ของ vuex ที่เอาไว้แชร์ data ที่ต้องการเอาไปใช้ในหลายๆ view หลายๆ component
+
+![vuex](img/vuex.PNG)

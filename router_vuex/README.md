@@ -1,4 +1,4 @@
-# vue-dojo2
+# router_vuex
 
 ## Project setup
 ```
