@@ -3,10 +3,12 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/cats">Cats</router-link> |
-      <router-link to="/dogs">Dogs</router-link> |
-      <router-link to="/pet">Pet</router-link>
+      <router-link to="/dogs">Dogs</router-link>
     </div>
-    <router-view />
+    <b-container>
+      <!-- จะเอา component ที่เรา config ไว้ที่ router มา render ที่นี่ -->
+      <router-view />
+    </b-container>
   </div>
 </template>
 

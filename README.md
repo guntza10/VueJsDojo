@@ -336,3 +336,21 @@
 3. `index.js` ใน folder `store` => เป็นไฟล์ของ vuex ที่เอาไว้แชร์ data ที่ต้องการเอาไปใช้ในหลายๆ view หลายๆ component
 
 ![vuex](img/vuex.PNG)
+
+### **`Route`**
+
+=> เป็นการกำหนด route path ในการเข้าถึงหน้าของแต่ละ view
+
+![router](img/router.PNG)
+
+`Note : ` เป็นการกำหนดว่าถ้าเข้ามาด้วย path นี้จะต้องเอา view หรือ component อันไหนมา render
+
+### **`Dynamic Route Matching`**
+
+![dynamicRoute](img/dynamicRoute.PNG)
+
+## **`Trick and Tips`**
+
+- การใส่ `@` ในการ ref path ของไฟล์ โดย `@` หมายถึง folder `src` (`เป็น syntax ของ vue cli`)
+
+  `Note : ` การใช้ `@` จะช่วยทำให้เราเขียน ref path file ได้สะดวกขึ้นสั้นขึ้น
