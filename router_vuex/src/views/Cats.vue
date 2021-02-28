@@ -1,17 +1,20 @@
 <template>
   <div>
-    <h1>Cats for Adoption</h1>
-    <b-table :fields="fields" :items="cats">
-      <template #cell(name)="data">
-        <a :href="`/pets/${data.index}`">{{ data.value }}</a>
-      </template>
-    </b-table>
+    <PetTable species="Cats" :pets="cats" :fields="fields" />
   </div>
 </template>
 
 <script>
-import cats from "@/datas/cats";
+// import cats from "@/datas/cats";
+
+// data from Vuex
+import { mapState } from "vuex";
+import PetTable from "@/components/PetTable";
+
 export default {
+  components: {
+    PetTable,
+  },
   data() {
     return {
       fields: [
@@ -33,13 +36,16 @@ export default {
           key: "location",
           label: "Location",
           formatter: (value) => {
-            let charArr = value.split("");
-            let newCharArr = charArr.map((v, i) => {
-              let char = i === 0 ? v.toUpperCase() : v;
-              return char;
-            });
-            let newFormat = newCharArr.join("");
-            return newFormat;
+            if (value) {
+              let charArr = value.split("");
+              let newCharArr = charArr.map((v, i) => {
+                let char = i === 0 ? v.toUpperCase() : v;
+                return char;
+              });
+              let newFormat = newCharArr.join("");
+              return newFormat;
+            }
+            return value;
           },
         },
         {
@@ -50,13 +56,16 @@ export default {
           key: "gender",
           label: "Gender",
           formatter: (value) => {
-            let charArr = value.split("");
-            let newCharArr = charArr.map((v, i) => {
-              let char = i === 0 ? v.toUpperCase() : v;
-              return char;
-            });
-            let newFormat = newCharArr.join("");
-            return newFormat;
+            if (value) {
+              let charArr = value.split("");
+              let newCharArr = charArr.map((v, i) => {
+                let char = i === 0 ? v.toUpperCase() : v;
+                return char;
+              });
+              let newFormat = newCharArr.join("");
+              return newFormat;
+            }
+            return value;
           },
         },
         {
@@ -64,8 +73,12 @@ export default {
           label: "Weight",
         },
       ],
-      cats: cats,
+      // cats: cats,
     };
+  },
+  computed: {
+    // mapState vuex
+    ...mapState(["cats"]),
   },
 };
 </script>

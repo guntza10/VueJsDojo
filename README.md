@@ -278,7 +278,7 @@
 - `methods` -> เป็น object ที่เอาไว้เขียน function จัดการเกี่ยวกับ event หรือ logic ต่างๆ
 - `computed` -> เป็น object ที่เอาไว้เขียน property ที่มีการเปลี่ยนแปลงและต้องการ keep track data และนำ property ใน computed ไปใช้ต่อ
 - `props` -> เป็น array หรือ object ที่เอาไว้ declare props ที่รับส่งค่าจาก parent component
-- `component` -> เป็น array ที่เอาไว้ declare component อื่นที่ต้องการจะใช้บน parent component
+- `components` -> เป็น object ที่เอาไว้ declare component อื่นที่ต้องการจะใช้บน parent component
 
 ## **`Vue Devtool`**
 
@@ -347,10 +347,156 @@
 
 ### **`Dynamic Route Matching`**
 
+_Example 1_
+
 ![dynamicRoute](img/dynamicRoute.PNG)
+
+_Example 2_
+
+![dynamicRoute2](img/dynamicRoute2.PNG)
+
+`Note : ` get ค่า route params ได้จาก `$route.params.ชื่อของrouteparam`
+
+![dynamicRoute3](img/dynamicRoute3.PNG)
+
+### **`Vuex`**
+
+=> เป็นที่สำหรับ share data สำหรับเอาไปใช้ใน component ต่างๆ จะแบ่งออกเป็น 3 ส่วน
+
+1. `state` => เป็น object ที่เอาไว้เก็บ data ที่ต้องการจะ share เอาไปใช้ใน component ต่างๆ
+
+   ![vuexState](img/vuexState.PNG)
+
+2. `mutations` => เอาไว้จัดการ update ค่าให้ state
+
+   `Note :` parameter ของ mutation มี 2 ตัวคือ state กับค่าที่ต้องการจะ update
+
+   ```
+    appendPet: (state, { pet, species }) => {
+        state[species].push(pet);
+    }
+
+    ** state เป็น object ของ vuex
+   ```
+
+   ![vuexMutations](img/vuexMutations.PNG)
+
+3. `actions` => เอาไว้เรียกใช้ mutations ในการ update state (`เอาไว้เป็นส่วนที่ call API ได้ response กลับมาแล้วต้องการ update ค่าให้ state ก็จะทำการเรียกใช้ mutations อีกทีนึง`)
+
+   `Note : ` actions เป็น asynchronous function
+
+   `Note :` commit method ของ context เอาไว้เรียกใช้ mutations
+
+   ```
+    context.commit('ชื่อ mutation ที่ต้องการเรียกใช้', ค่าที่ต้องการจะเอาไป update state)
+   ```
+
+   `Note : ` context เป็น object ของ Vuex
+
+   `Note : ` context มันมี method commit โดย default อยู่แล้วเราสามารถใช้ Spread Operation กับ context เพื่อเอา commit มาใช้ได้ตามรูปตัวอย่างข้างล่าง
+
+   ![vuexActions](img/vuexActions.PNG)
+
+4. `getters` => จะเหมือนกับ computed property ของ vue instance แต่เป็นของ `Vuex Store` ใช้จัดการ property อะไรซักอย่าง ที่เอา state มาใช้ ก่อนที่จะ return state กลับไปให้ component (`เอา state มาใช้ ไม่ได้มีการ update หรือเปลี่ยนค่าให้ state`)
+
+   `Note : ` เหตุผลที่ใช้ getters
+
+   - เราใช้ getters เพื่อเอาไป binding ให้ component แล้วไม่อยากสร้าง state เยอะเกินความจำเป็น
+   - ใช้สำหรับการ filter state
+   - ใช้สำหรับ change ที่ต้องการให้ render บน DOM
+
+   ![vuexGetters](img/vuexGetters.PNG)
+
+   `Note :` เราสามารถส่ง getters เข้าไปใช้ใน getters ตัวอื่นได้ผ่าน parameter ตัวที่ 2
+
+   ![vuexGetters2](img/vuexGetters2.PNG)
+
+`Note : ` วิธีเอา vuex ไปใช้ใน component
+
+_`Get Value จาก state`_
+
+1. import mapState จาก vuex
+
+   ![vuex2](img/vuex2.PNG)
+
+2. ใช้ `spread mapState` เพื่อ call function และส่งชื่อของ `state` ที่ต้องการจะ map ใน store(`vuex`) ใน `computed property` ของ vue Instance
+
+   ![vuex3](img/vuex3.PNG)
+
+   `Note :` `...mapState(['state1' , 'state2' ])` argument เป็น array ของชื่อ state ที่ต้องการจะ map
+
+3. เอา state ไป binding
+
+   ![vuex4](img/vuex4.PNG)
+
+4. อย่าลืม ref path store ที่เอาไปใช้ set เป็น option ของ vue instance ในไฟล์ `main.js` ให้ถูกต้องด้วย
+
+   ![vuex6](img/vuex6.PNG) \
+   `Note : ` มันจะ ref path store ไปที่ไฟล์ `index.js` ใน folder store
+
+   ![vuex5](img/vuex5.PNG)
+
+`Note : ` เราสามารถ get ค่าจาก state ของ store ได้ 2 แบบ (`get state ของ vuex`)
+
+- `mapState([' '])` => แบบนี้จะเป็น standard syntax ที่นิยมใช้ เขียนสั้น จัดการง่ายเมื่อเราต้องการ get ค่าจากหลายๆ state
+- `this.$store.state.ชื่อstate` => วิธีแบบลวกๆ ไม่แนะนำให้ใช้ (`ไม่ Best Practice`)
+
+_`เรียกใช้ actions จาก vuex`_
+
+1. import mapActions จาก vuex
+
+   ![vuex8](img/vuex8.PNG)
+
+2. ใช้ `spread mapActions` เพื่อ call function และส่งชื่อ actions ที่ต้องการจะใช้ใน store(`vuex`) ใน `methods property` ของ vue instance
+
+   ![vuex7](img/vuex7.PNG)
+
+   `Note :` `...mapActions(['action1' , 'action2' ])` argument เป็น array ของชื่อ action ที่ต้องการจะใช้
+
+3. เรียกใช้ actions ที่ได้จาก `mapActions`
+
+   ![vuex9](img/vuex9.PNG)
+
+4. binding event submit
+
+   ![vuex10](img/vuex10.PNG)
+
+   `Note :` ถ้าไม่อยากให้มีการ refresh หน้าหลัง submit ให้ใช้ `@submit.prevent`
+
+_`ใช้ Getters`_
+
+1. import mapGetters จาก vuex
+
+   ![vuex11](img/vuex11.PNG)
+
+2. ใช้ `spread mapGetters` เพื่อ call function และส่งชื่อ getters ที่ต้องการจะใช้ใน store(`vuex`) ใน `computed property` ของ vue instance
+
+   ![vuex12](img/vuex12.PNG)
+
+3. เอา getters ไป binding
+
+   ![vuex13](img/vuex13.PNG)
+
+`Note : ` flow การทำงาน Vuex
+
+```
+component  =>   actions    =>    mutation   =>   state
+          call            call            update
+```
 
 ## **`Trick and Tips`**
 
 - การใส่ `@` ในการ ref path ของไฟล์ โดย `@` หมายถึง folder `src` (`เป็น syntax ของ vue cli`)
 
   `Note : ` การใช้ `@` จะช่วยทำให้เราเขียน ref path file ได้สะดวกขึ้นสั้นขึ้น
+
+- การ ref property
+
+```
+this.cats
+this["cats"]
+
+ถ้า this.$route.params.species มีค่าเท่ากับ cats
+Ex. const animals = this[this.$route.params.species];
+เพราะฉะนั้น animals = this["cats"] หรือ this.cats นั่นเอง
+```
