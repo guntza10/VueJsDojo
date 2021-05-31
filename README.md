@@ -18,7 +18,7 @@
 - tag ต่างๆใน HTML จะเรียกว่า Element(DOM)
 - เราใช้ DOM HTML ในการเข้าถึง Element(tag) ต่างๆ ผ่านคำสั่งของ Javascript
 
-`Note : ` vue create "ชื่อ project" => command ในการสร้าง project vue
+`Note : ` https://cli.vuejs.org/guide/installation.html ขั้นตอนในการลง vueJs + create project vuejs
 
 ## **`Basic For VueJs`**
 
