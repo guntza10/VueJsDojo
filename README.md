@@ -303,6 +303,35 @@
 
 ![props2](img/props2.PNG)
 
+### _`Slots`_
+
+=> ถ้าเราต้องการส่ง html element ต่างๆไปที่ component อื่น (เอา children ไป render ที่ component อื่น) เราจะส่งผ่าน slots
+
+**Approach1 (Simple way)**
+
+![slots1](img/slots1.PNG)
+
+**Approach2 (css for slots)**
+
+![slots2](img/slots2.PNG)
+
+**Approach3 (slots with name)**
+
+![slots3](img/slots3.PNG)
+
+v-slot สามารถเขียนย่อได้ดังนี้
+
+![slots4](img/slots4.PNG)
+
+เราสามารถกำหนด default slot ได้ ถ้าไม่ได้มีการส่ง slot นั้นเข้ามา มันจะเอา default มา render แต่ถ้ามีมันจะเอา slot ที่ส่งเข้ามามา render ทับแทน
+
+![slots5](img/slots5.PNG)
+
+`Note : ` ref -> https://vueschool.io/lessons/component-slots
+
+- `props` -> คือ data ที่ส่งระหว่าง component
+- `slots` -> คือ html element ต่างๆ ที่ส่งระหว่าง component (เอา children ของ component ไป render)
+
 ## **`Vuex & Vue-Router`**
 
 ![router_vuex](img/router_vuex.PNG)
