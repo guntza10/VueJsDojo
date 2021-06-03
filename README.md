@@ -359,6 +359,8 @@ _Example 2_
 
 ![dynamicRoute3](img/dynamicRoute3.PNG)
 
+`Note : ` ref route navigate https://router.vuejs.org/guide/#javascript
+
 ### **`Vuex`**
 
 => เป็นที่สำหรับ share data สำหรับเอาไปใช้ใน component ต่างๆ จะแบ่งออกเป็น 3 ส่วน
