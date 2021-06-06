@@ -174,6 +174,27 @@
 
 ![computed2](img/computed2.PNG)
 
+## _`Watched Property`_
+
+=> เป็น property ของ vue instance ที่เอาไว้เขียน function ที่เกี่ยวกับการ keep track การเปลี่ยนแปลงของ props (`ถ้า props ที่ parent component มีการเปลี่ยนแปลง มันจะเข้ามา run function ใน watch property`)
+
+`Note : ` สามารถเขียน watcher ได้ 2 Approach
+
+- `function`
+
+  > ![watch1](img/watch1.PNG)
+  >
+  > => watch แบบ function จะทำก็ต่อเมื่อ props มีการเปลี่ยนแปลง
+
+- `object`
+
+  > ![watch2](img/watch2.PNG)
+  >
+  > => watch แบบ object จะทำก็ต่อเมื่อ props มีการเปลี่ยนแปลงเหมือนกัน เพียงแต่เราสามารถ config ให้มันทำงานได้เลยตั้งแต่ส่งค่ามาคร้้งแรก
+  >
+  > - `immediate` => เป็น property ที่เอาไว้ set ว่าจะให้มันทำงานใน watch เลยมั้ยตั้งแต่คร้้งแรกที่ส่ง props เข้ามา (`true`) ถ้าไม่ (`false`)
+  > - `handler()` => เป็นส่วนที่เอาไว้จัดการ logic
+
 ## _`Components`_
 
 => เป็นชิ้นส่วนเล็กๆ ที่มาประกอบรวมกันจนกลายเป็น page
@@ -199,27 +220,6 @@
 - mounted -> จะถูกเรียกเมื่อ component initialize เสร็จ (`สร้างเสร็จ`)
 - updated -> จะถูกเรียกเมื่อ state หรือ data มีการเปลี่ยนแปลง (`data มีการเปลี่ยแปลง`)
 - destroyed -> จะถูกเรียกเมื่อ component ถูกทำลาย
-
-## _`Watched Property`_
-
-=> เป็น property ของ vue instance ที่เอาไว้เขียน function ที่เกี่ยวกับการ keep track การเปลี่ยนแปลงของ props (`ถ้า props ที่ parent component มีการเปลี่ยนแปลง มันจะเข้ามา run function ใน watch property`)
-
-`Note : ` สามารถเขียน watcher ได้ 2 Approach
-
-- `function`
-
-  > ![watch1](img/watch1.PNG)
-  >
-  > => watch แบบ function จะทำก็ต่อเมื่อ props มีการเปลี่ยนแปลง
-
-- `object`
-
-  > ![watch2](img/watch2.PNG)
-  >
-  > => watch แบบ object จะทำก็ต่อเมื่อ props มีการเปลี่ยนแปลงเหมือนกัน เพียงแต่เราสามารถ config ให้มันทำงานได้เลยตั้งแต่ส่งค่ามาคร้้งแรก
-  >
-  > - `immediate` => เป็น property ที่เอาไว้ set ว่าจะให้มันทำงานใน watch เลยมั้ยตั้งแต่คร้้งแรกที่ส่ง props เข้ามา (`true`) ถ้าไม่ (`false`)
-  > - `handler()` => เป็นส่วนที่เอาไว้จัดการ logic
 
 # **`VueJs`**
 
