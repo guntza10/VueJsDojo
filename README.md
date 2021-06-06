@@ -205,6 +205,10 @@
 
 > ![watch3](img/watch3.PNG)
 
+`Note : ` ใน watcher ไม่สามารถใช้ arrow function ได้
+
+> ![watch4](img/watch4.PNG)
+
 `Note : ` ref computed and watcher -> https://vuejs.org/v2/guide/computed.html
 
 ## _`Components`_
