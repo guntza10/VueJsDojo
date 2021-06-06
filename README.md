@@ -40,6 +40,8 @@
 
 ![v-model](img/v-model.PNG)
 
+`Note : ` ปกติ v-model โดย default มันจะ synce input กับ data หลังจากแต่ละ input event เกิดขึ้นเสร็จ แต่ถ้าเราอยากให้มัน sync ทันทีหลังจากที่มีการ change เราก็ใส่ modifier ให้มันแบบนี้ `v-model.lazy`
+
 ### **v-if**,**v-else-if**,**v-else**
 
 `Note : ` `v-if`, `v-else-if`, `v-else` มันจะ render เฉพาะ DOM Element ที่เข้าเงื่อนไขเท่านั้น DOM Element ไหนที่ไม่เข้าเงื่อนไขจะไม่ถูกเอามา render
