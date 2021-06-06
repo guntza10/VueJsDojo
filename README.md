@@ -174,9 +174,13 @@
 
 ![computed2](img/computed2.PNG)
 
+`Note : ` โดยปกติ default ของ computed จะเป็น getter แต่เราสามารถเขียนเป็น setter ให้มันได้
+
+![computed3](img/computed3.PNG)
+
 ## _`Watched Property`_
 
-=> เป็น property ของ vue instance ที่เอาไว้เขียน function ที่เกี่ยวกับการ keep track การเปลี่ยนแปลงของ props (`ถ้า props ที่ parent component มีการเปลี่ยนแปลง มันจะเข้ามา run function ใน watch property`)
+=> เป็น property ของ vue instance ที่เอาไว้เขียน function ที่เกี่ยวกับการ keep track การเปลี่ยนแปลงของ data หรือ props แล้วจัดการ logic อะไรซักอย่าง (`ถ้า data มีการเปลี่ยนแปลง หรือ props ที่ parent component มีการเปลี่ยนแปลง มันจะเข้ามา run function ใน watch property`)
 
 `Note : ` สามารถเขียน watcher ได้ 2 Approach
 
@@ -194,6 +198,12 @@
   >
   > - `immediate` => เป็น property ที่เอาไว้ set ว่าจะให้มันทำงานใน watch เลยมั้ยตั้งแต่คร้้งแรกที่ส่ง props เข้ามา (`true`) ถ้าไม่ (`false`)
   > - `handler()` => เป็นส่วนที่เอาไว้จัดการ logic
+
+**Basic Example watch**
+
+> ![watch3](img/watch3.PNG)
+
+`Note : ` ref computed and watcher -> https://vuejs.org/v2/guide/computed.html
 
 ## _`Components`_
 
